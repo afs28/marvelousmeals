@@ -4,6 +4,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 
+    // this is team member Birgitta Ýr Eyþórsdóttir (bye1@hi.is)
 @SpringBootApplication(exclude = {DataSourceAutoConfiguration.class })
 public class HugboApplication {
 
