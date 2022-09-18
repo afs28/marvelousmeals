@@ -2,22 +2,28 @@ package is.hi.hbv501g.hugbo;
 
 import javax.persistence.*;
 
+/**
+ * The main recipe user class, getters and setters.
+ * @Authors: AFS
+ */
 @Entity
 public class RecipeUser {
 
+    // Do we add recipes in here as well or should we keep things separate?
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer uid;
+
+    private Integer recipeUserId;
 
     private String firstName;
     private String lastName;
 
-    public Integer getUid() {
-        return uid;
+    public Integer getUId() {
+        return recipeUserId;
     }
 
-    public void setUid(Integer id) {
-        this.uid = id;
+    public void setUId(Integer id) {
+        this.recipeUserId = id;
     }
 
     public String getFirstName() {

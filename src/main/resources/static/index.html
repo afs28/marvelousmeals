@@ -1,24 +1,31 @@
+<!--
+    Our current front-page, to be changed and made fancier in the future!
+-->
+
 <!DOCTYPE html>
 <html>
     <head>
         <title>Marvelous Meals</title>
         <meta http-equiv="Content-Type" content="text/html charset=UTF-8"/>
     </head>
-    <body>
-    <p>Welcome to Marvelous Meals.</p>
+    <body style="text-align: center; background-color: black; color: antiquewhite">
+    <h1>Welcome to Marvelous Meals.</h1>
         <form action="/add" method="POST">
-            <p>Sign up here!</p>
+            <h3>Sign up here!</h3>
             <div>
                 <label for="firstName">First name:</label>
                 <input name="first" id="firstName" value="Your first name">
             </div>
+            <br>
             <div>
                 <label for="lastName">Last name:</label>
                 <input name="last" id="lastName" value="Your last name">
             </div>
+            <br>
             <div>
                 <button>Add user</button>
             </div>
+            <br>
         </form>
     <form action="/list" method="GET">
         <button>List customers</button>

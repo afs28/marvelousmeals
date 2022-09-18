@@ -3,12 +3,23 @@ package is.hi.hbv501g.hugbo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+/**
+ * The main controller that handles recipes and users.
+ * @Authors: AFS
+ *
+ */
 @RestController
 public class RecipeController {
 
     @Autowired
     private RecipeUserRepository recipeUserRepository;
 
+    /**
+     * Asks for first and last name, then adds user to repository.
+     * @param first first name
+     * @param last last name
+     * @return Returns a string of the user's name.
+     */
 
     @PostMapping("/add")
     public String addUser(@RequestParam String first, @RequestParam String last) {
@@ -19,14 +30,24 @@ public class RecipeController {
         return "Added new user to repo!";
     }
 
+    /**
+     * Fetches all the users in the database.
+     * @return Returns a list of all the users.
+     */
+
     @GetMapping("/list")
     public Iterable<RecipeUser> getUsers() {
         return recipeUserRepository.findAll();
     }
 
+    /**
+     * Fetches requested user by their ID.
+     * @param id Possible master key?
+     * @return Returns user by ID.
+     */
     @GetMapping("/find/{id}")
     public RecipeUser findUserById(@PathVariable Integer id) {
-        return recipeUserRepository.findRecipeUserByUid(id);
+        return recipeUserRepository.findRecipeUserByRecipeUserId(id);
     }
 
 }
