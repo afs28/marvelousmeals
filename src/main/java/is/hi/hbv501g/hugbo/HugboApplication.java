@@ -12,6 +12,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * Minor functionality has been added, you can add users to the repo but that's about it... so far!
  *
  */
+    // server pw: 9292
     // this is team member Birgitta Ýr Eyþórsdóttir (bye1@hi.is)
     // this is team member Heba Sólveig Heimisdóttir (hsh58@hi.is)
     // this is team member Hrefna Karen Valgarðsdóttir (hkv5@hi.is)
