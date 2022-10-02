@@ -1,6 +1,7 @@
-package is.hi.hbv501g.hugbo.Persistence.Entities;
+package is.hi.hbv501g.hugbo.Controllers;
 
-public class Recipe {
+public class SearchController {
+
     /*
                                             TO BE CONFIGURED
      */

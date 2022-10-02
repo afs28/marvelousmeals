@@ -10,7 +10,7 @@ import javax.persistence.*;
 public class RecipeUser {
 
     /*
-       We have to split recipes and users up, they are their own entities
+                                                    TO BE SPLIT UP IN TWO, RECIPE AND USER
     */
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

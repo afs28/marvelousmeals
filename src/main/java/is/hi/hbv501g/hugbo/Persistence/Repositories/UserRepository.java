@@ -8,6 +8,8 @@ import org.springframework.data.repository.CrudRepository;
  *
  */
 public interface UserRepository extends CrudRepository<RecipeUser, Integer> {
-
+/*
+                                            TO BE RECONFIGURED
+ */
     RecipeUser findRecipeUserByRecipeUserId(Integer recipeUserId);
 }
