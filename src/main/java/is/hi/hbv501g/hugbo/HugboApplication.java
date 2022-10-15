@@ -16,6 +16,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
     // this is team member Birgitta Ýr Eyþórsdóttir (bye1@hi.is)
     // this is team member Heba Sólveig Heimisdóttir (hsh58@hi.is)
     // this is team member Hrefna Karen Valgarðsdóttir (hkv5@hi.is)
+    // branch testnation
 @SpringBootApplication
 public class HugboApplication {
 
