@@ -1,47 +1,67 @@
 package is.hi.hbv501g.hugbo.Persistence.Entities;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * The main recipe user class, getters and setters.
  * @Authors: AFS
  */
+
 @Entity
+@Table(name="recipeUsers")
 public class RecipeUser {
 
     /*
                                                     TO BE SPLIT UP IN TWO, RECIPE AND USER
     */
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long recipeUserID;
 
-    private Integer recipeUserId;
+    private String recipeUsername;
+    private String recipeUserPassword;
 
-    private String firstName;
-    private String lastName;
+    @OneToMany(mappedBy = "recipeuser", cascade = CascadeType.ALL, orphanRemoval = true)
+    List<RecipeList> recipeList = new ArrayList<>();
+    public RecipeUser() {
 
-    public Integer getRecipeUserId() {
-        return recipeUserId;
+    }
+    public RecipeUser(String recipeUsername, String recipeUserPassword){
+        this.recipeUsername = recipeUsername;
+        this.recipeUserPassword = recipeUserPassword;
     }
 
-    public void setRecipeUserId(Integer id) {
-        this.recipeUserId = id;
+    public long getRecipeUserID() {
+        return recipeUserID;
     }
 
-    public String getFirstName() {
-        return firstName;
+    public void setRecipeUserID(long recipeUserID) {
+        this.recipeUserID = recipeUserID;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public String getRecipeUsername() {
+        return recipeUsername;
     }
 
-    public String getLastName() {
-        return lastName;
+    public void setRecipeUsername(String recipeUsername) {
+        this.recipeUsername = recipeUsername;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public String getRecipeUserPassword() {
+        return recipeUserPassword;
     }
 
+    public void setRecipeUserPassword(String recipeUserPassword) {
+        this.recipeUserPassword = recipeUserPassword;
+    }
+
+    public List<RecipeList> getRecipeList() {
+        return recipeList;
+    }
+
+    public void setRecipeList(List<RecipeList> recipeList) {
+        this.recipeList = recipeList;
+    }
 }

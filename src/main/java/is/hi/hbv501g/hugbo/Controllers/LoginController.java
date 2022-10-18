@@ -7,7 +7,4 @@ import org.springframework.web.bind.annotation.RestController;
 @Controller
 public class LoginController {
 
-    /*
-                                            TO BE CONFIGURED
-     */
 }
