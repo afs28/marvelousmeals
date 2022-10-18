@@ -4,7 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 
 @Entity
-public class Rating {
+public class Comments {
     private Long id;
 
     public void setId(Long id) {

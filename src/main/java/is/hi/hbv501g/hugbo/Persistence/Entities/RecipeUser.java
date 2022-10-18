@@ -7,7 +7,7 @@ import javax.persistence.*;
  * @Authors: AFS
  */
 @Entity
-public class User {
+public class RecipeUser {
 
     /*
                                                     TO BE SPLIT UP IN TWO, RECIPE AND USER
@@ -15,17 +15,17 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
 
-    private Integer userId;
+    private Integer recipeUserId;
 
     private String firstName;
     private String lastName;
 
-    public Integer getUId() {
-        return userId;
+    public Integer getRecipeUserId() {
+        return recipeUserId;
     }
 
-    public void setUId(Integer id) {
-        this.userId = id;
+    public void setRecipeUserId(Integer id) {
+        this.recipeUserId = id;
     }
 
     public String getFirstName() {

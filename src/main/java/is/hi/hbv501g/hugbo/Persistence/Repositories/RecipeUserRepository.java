@@ -1,5 +1,5 @@
 package is.hi.hbv501g.hugbo.Persistence.Repositories;
-import is.hi.hbv501g.hugbo.Persistence.Entities.User;
+import is.hi.hbv501g.hugbo.Persistence.Entities.RecipeUser;
 import org.springframework.data.repository.CrudRepository;
 
 /**
@@ -7,9 +7,10 @@ import org.springframework.data.repository.CrudRepository;
  * @Authors: AFS
  *
  */
-public interface UserRepository extends CrudRepository<User, Integer> {
+
+public interface RecipeUserRepository extends CrudRepository<RecipeUser, Long> {
 /*
                                             TO BE RECONFIGURED
  */
-    User findUserByUserId(Integer UserId);
+    RecipeUser findUserByRecipeUserId(Integer recipeUserId);
 }

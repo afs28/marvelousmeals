@@ -1,6 +1,6 @@
 package is.hi.hbv501g.hugbo.Services;
 
-public interface UserService {
+public interface RecipeUserService {
     /*
                                         TO BE CONFIGURED
      */

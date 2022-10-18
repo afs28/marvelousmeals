@@ -1,6 +1,9 @@
 package is.hi.hbv501g.hugbo.Controllers;
 
-public class UserController {
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class RecipeUserController {
     /*
                                                    TO BE CONFIGURED
      */
