@@ -1,12 +1,10 @@
 package is.hi.hbv501g.hugbo.Persistence.Entities;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.swing.*;
 
 @Entity
+@Table(name = "recipe")
 public class Recipe {
 
     @Id
@@ -17,6 +15,8 @@ public class Recipe {
     private String description;
     private String difficultyLevel;
     private String allergyFactors;
+    private String comment;
+    private Double rating;
     private ImageIcon imageOfRecipe;
     private Integer forNumberOfPeople;
     private Integer prepTime;
@@ -32,6 +32,22 @@ public class Recipe {
 
     public String getTitle() {
         return title;
+    }
+
+    public String getComment() {
+        return comment;
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment;
+    }
+
+    public Double getRating() {
+        return rating;
+    }
+
+    public void setRating(Double rating) {
+        this.rating = rating;
     }
 
     public void setTitle(String title) {

@@ -1,7 +1,8 @@
 package is.hi.hbv501g.hugbo.Controllers;
 
-import is.hi.hbv501g.hugbo.Persistence.Entities.User;
-import is.hi.hbv501g.hugbo.Persistence.Repositories.UserRepository;
+import is.hi.hbv501g.hugbo.Persistence.Entities.RecipeUser;
+import is.hi.hbv501g.hugbo.Persistence.Repositories.RecipeRepository;
+import is.hi.hbv501g.hugbo.Persistence.Repositories.RecipeUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,7 +21,10 @@ public class RecipeController {
 
 
     @Autowired
-    private UserRepository userRepository;
+    private RecipeUserRepository recipeUserRepository;
+
+    private RecipeRepository recipeRepository;
+
 
     /**
      * Asks for first and last name, then adds user to repository.
@@ -31,10 +35,10 @@ public class RecipeController {
 
     @PostMapping("/add")
     public String addUser(@RequestParam String first, @RequestParam String last) {
-        User recipeUser = new User();
+        RecipeUser recipeUser = new RecipeUser();
         recipeUser.setFirstName(first);
         recipeUser.setLastName(last);
-        userRepository.save(recipeUser);
+        recipeUserRepository.save(recipeUser);
         return "Added new user to repo!";
     }
 
@@ -44,8 +48,8 @@ public class RecipeController {
      */
 
     @GetMapping("/list")
-    public Iterable<User> getUsers() {
-        return userRepository.findAll();
+    public Iterable<RecipeUser> getUsers() {
+        return recipeUserRepository.findAll();
     }
 
     /**
@@ -54,8 +58,8 @@ public class RecipeController {
      * @return Returns user by ID.
      */
     @GetMapping("/find/{id}")
-    public User findUserById(@PathVariable Integer id) {
-        return userRepository.findUserByUserId(id);
+    public RecipeUser findUserById(@PathVariable Integer id) {
+        return recipeUserRepository.findUserByRecipeUserId(id);
     }
 
 }
