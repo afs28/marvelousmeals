@@ -7,17 +7,17 @@
 <body>
 <h2>Sign up for an account here:</h2>
 <form action="#" th:action="@{/signup}" th:object="${user}"  method="post">
-    <input type="text" name="username" id="username" th:field="*{username}" placeholder="Account name"/>
+    <input type="text" name="RecipeUsername" id="RecipeUsername" th:field="*{RecipeUsername}" placeholder="Account name"/>
     <br>
-    <input type="text" name="password" id="password" th:value="*{password}" placeholder="Password"/>
+    <input type="text" name="RecipeUserPassword" id="RecipeUserPassword" th:value="*{RecipeUserPassword}" placeholder="Password"/>
     <br>
     <input type="submit" value="Sign up"/>
     <br>
     <H2>Or log in to an existing account:</H2>
     <form action="#" th:action="@{/login}" th:object="${user}"  method="post">
-        <input type="text" name="username" id="existingusername" th:field="*{username}" placeholder="Existing user"/>
+        <input type="text" name="username" id="existingusername" th:field="*{RecipeUsername}" placeholder="Existing user"/>
         <br>
-        <input type="text" name="password" id="existingpassword" th:value="*{password}" placeholder="User password"/>
+        <input type="text" name="password" id="existingpassword" th:value="*{RecipeUserPassword}" placeholder="User password"/>
         <br>
         <input type="submit" value="Login"/>
     </form>
