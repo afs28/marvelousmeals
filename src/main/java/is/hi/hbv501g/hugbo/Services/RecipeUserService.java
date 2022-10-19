@@ -8,7 +8,6 @@ public interface RecipeUserService {
     RecipeUser save(RecipeUser recipeUser);
     void delete(RecipeUser recipeUser);
     List<RecipeUser> findAll();
-    RecipeUser findByID(long ID);
     RecipeUser findByRecipeUsername(String recipeUsername);
     RecipeUser login(RecipeUser recipeUser);
 }

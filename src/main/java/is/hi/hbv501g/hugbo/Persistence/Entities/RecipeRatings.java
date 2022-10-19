@@ -5,7 +5,7 @@ import javax.persistence.Id;
 
 @Entity
 public class RecipeRatings {
-    private long ratingsID;
+    private Long ratingsID;
 
     public void setRatingsID(Long ratingsID) {
         this.ratingsID = ratingsID;

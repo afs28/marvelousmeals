@@ -1,6 +1,5 @@
 package is.hi.hbv501g.hugbo.Services.Implementation;
 
-import is.hi.hbv501g.hugbo.Persistence.Entities.Recipe;
 import is.hi.hbv501g.hugbo.Persistence.Entities.RecipeUser;
 import is.hi.hbv501g.hugbo.Persistence.Repositories.RecipeUserRepository;
 import is.hi.hbv501g.hugbo.Services.RecipeUserService;
@@ -31,7 +30,6 @@ public class RecipeUserServiceImplementation implements RecipeUserService {
     public List<RecipeUser> findAll(){
         return recipeUserRepository.findAll();
     }
-
 
 
     @Override
