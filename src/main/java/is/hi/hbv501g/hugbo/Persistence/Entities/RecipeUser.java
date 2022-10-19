@@ -1,8 +1,6 @@
 package is.hi.hbv501g.hugbo.Persistence.Entities;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * The main recipe user class, getters and setters.
@@ -22,9 +20,11 @@ public class RecipeUser {
     private String recipeUserPassword;
 
     public RecipeUser() {
-
+        super();
+        // TODO Auto-generated constructor stub
     }
     public RecipeUser(String recipeUsername, String recipeUserPassword){
+        super();
         this.recipeUsername = recipeUsername;
         this.recipeUserPassword = recipeUserPassword;
     }

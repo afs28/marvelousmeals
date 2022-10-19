@@ -1,17 +1,30 @@
 package is.hi.hbv501g.hugbo.Controllers;
 
 import is.hi.hbv501g.hugbo.Persistence.Entities.RecipeUser;
-import is.hi.hbv501g.hugbo.Services.RecipeUserService;
+import is.hi.hbv501g.hugbo.Persistence.Repositories.RecipeUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
-import javax.servlet.http.HttpSession;
-
-@Controller
+@RestController
 public class RecipeUserController {
+
+    @Autowired
+    private RecipeUserRepository myRepo;
+    @PostMapping("/add")
+    public String AddUser (@RequestParam String username, @RequestParam String password) {
+
+        RecipeUser newUser = new RecipeUser(username, password);
+        newUser.setRecipeUserID(0l); // why can't this be skipped????
+        myRepo.save(newUser);
+        return "user added to the repo!";
+    }
+
+    @GetMapping("/list")
+    public Iterable<RecipeUser> getUsers() {
+        return myRepo.findAll();
+    }
 
 }
