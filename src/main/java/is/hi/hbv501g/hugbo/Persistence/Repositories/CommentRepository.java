@@ -1,4 +1,7 @@
 package is.hi.hbv501g.hugbo.Persistence.Repositories;
 
-public interface CommentRepository {
+import is.hi.hbv501g.hugbo.Persistence.Entities.RecipeComments;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface CommentRepository extends JpaRepository<RecipeComments, Long> {
 }
