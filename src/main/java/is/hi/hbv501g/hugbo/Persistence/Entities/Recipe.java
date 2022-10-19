@@ -1,33 +1,55 @@
 package is.hi.hbv501g.hugbo.Persistence.Entities;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.swing.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
+@Table(name = "recipe")
 public class Recipe {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long recipeID;
 
     private String title;
-    private String author;
     private String description;
     private String difficultyLevel;
     private String allergyFactors;
+    private String comments;
+    private Double ratings;
     private ImageIcon imageOfRecipe;
     private Integer forNumberOfPeople;
     private Integer prepTime;
-    private Integer recipeUserId;
 
-    public Integer getUId() {
-        return recipeUserId;
+    @OneToMany(mappedBy = "recipe", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<RecipeList> recipeList = new ArrayList<>();
+
+    public Recipe(){
     }
 
-    public void setUId(Integer id) {
-        this.recipeUserId = id;
+    public Recipe(String title, String description, String difficultyLevel,
+                  String allergyFactors, String comments, Double ratings,
+                  ImageIcon imageOfRecipe, Integer forNumberOfPeople, Integer prepTime) {
+
+        this.title = title;
+        this.description = description;
+        this.difficultyLevel = difficultyLevel;
+        this.allergyFactors = allergyFactors;
+        this.comments = comments;
+        this.ratings = ratings;
+        this.imageOfRecipe = imageOfRecipe;
+        this.forNumberOfPeople = forNumberOfPeople;
+        this.prepTime = prepTime;
+    }
+
+    public long getRecipeID() {
+        return recipeID;
+    }
+
+    public void setRecipeID(long recipeID) {
+        this.recipeID = recipeID;
     }
 
     public String getTitle() {
@@ -36,14 +58,6 @@ public class Recipe {
 
     public void setTitle(String title) {
         this.title = title;
-    }
-
-    public String getAuthor() {
-        return author;
-    }
-
-    public void setAuthor(String author) {
-        this.author = author;
     }
 
     public String getDescription() {
@@ -68,6 +82,22 @@ public class Recipe {
 
     public void setAllergyFactors(String allergyFactors) {
         this.allergyFactors = allergyFactors;
+    }
+
+    public String getComments() {
+        return comments;
+    }
+
+    public void setComments(String comment) {
+        this.comments = comment;
+    }
+
+    public Double getRatings() {
+        return ratings;
+    }
+
+    public void setRatings(Double rating) {
+        this.ratings = rating;
     }
 
     public ImageIcon getImageOfRecipe() {
