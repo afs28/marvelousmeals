@@ -2,16 +2,14 @@ package is.hi.hbv501g.hugbo.Persistence.Entities;
 
 import javax.persistence.*;
 import javax.swing.*;
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
-@Table(name = "recipe")
+//@Table(name = "recipes")
 public class Recipe {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long recipeID;
+    private Long recipeID;
 
     private String title;
     private String description;
@@ -23,16 +21,15 @@ public class Recipe {
     private Integer forNumberOfPeople;
     private Integer prepTime;
 
-    @OneToMany(mappedBy = "recipe", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<RecipeList> recipeList = new ArrayList<>();
 
     public Recipe(){
     }
 
-    public Recipe(String title, String description, String difficultyLevel,
+    public Recipe(Long recipeID, String title, String description, String difficultyLevel,
                   String allergyFactors, String comments, Double ratings,
                   ImageIcon imageOfRecipe, Integer forNumberOfPeople, Integer prepTime) {
 
+        this.recipeID = recipeID;
         this.title = title;
         this.description = description;
         this.difficultyLevel = difficultyLevel;
@@ -48,7 +45,7 @@ public class Recipe {
         return recipeID;
     }
 
-    public void setRecipeID(long recipeID) {
+    public void setRecipeID(Long recipeID) {
         this.recipeID = recipeID;
     }
 

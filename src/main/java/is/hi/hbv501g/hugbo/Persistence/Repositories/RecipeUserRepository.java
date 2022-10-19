@@ -1,7 +1,7 @@
 package is.hi.hbv501g.hugbo.Persistence.Repositories;
 import is.hi.hbv501g.hugbo.Persistence.Entities.RecipeUser;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.repository.CrudRepository;
+
 
 import java.util.List;
 

@@ -17,10 +17,6 @@ public class RecipeServiceImplementation implements RecipeService {
         this.recipeRepository = recipeRepository;
     }
 
-    @Override
-    public Recipe findByTitle(String title){
-        return recipeRepository.findByTitle(title).get(0);
-    }
 
     @Override
     public List<Recipe> findAll(){
@@ -29,7 +25,7 @@ public class RecipeServiceImplementation implements RecipeService {
 
     @Override
     public Recipe findByID(long recipeID){
-        return recipeRepository.findByID(recipeID);
+        return recipeRepository.findByRecipeID(recipeID);
     }
 
     @Override

@@ -10,21 +10,17 @@ import java.util.List;
  */
 
 @Entity
-@Table(name="recipeUsers")
+//@Table(name="recipeusers")
+@Embeddable
 public class RecipeUser {
 
-    /*
-                                                    TO BE SPLIT UP IN TWO, RECIPE AND USER
-    */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long recipeUserID;
+    private Long recipeUserID;
 
     private String recipeUsername;
     private String recipeUserPassword;
 
-    @OneToMany(mappedBy = "recipeuser", cascade = CascadeType.ALL, orphanRemoval = true)
-    List<RecipeList> recipeList = new ArrayList<>();
     public RecipeUser() {
 
     }
@@ -37,7 +33,7 @@ public class RecipeUser {
         return recipeUserID;
     }
 
-    public void setRecipeUserID(long recipeUserID) {
+    public void setRecipeUserID(Long recipeUserID) {
         this.recipeUserID = recipeUserID;
     }
 
@@ -57,11 +53,4 @@ public class RecipeUser {
         this.recipeUserPassword = recipeUserPassword;
     }
 
-    public List<RecipeList> getRecipeList() {
-        return recipeList;
-    }
-
-    public void setRecipeList(List<RecipeList> recipeList) {
-        this.recipeList = recipeList;
-    }
 }
