@@ -17,24 +17,23 @@ public class LoginController {
     @Autowired
     private RecipeUserRepository myRepo;
 
-    @RequestMapping(value = "/login", method = RequestMethod.GET)
-    public ModelAndView login() {
+    @RequestMapping(value="/welcome")
+    public static String welcome() {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("login");
-        return modelAndView;
+        //return modelAndView;
+        return "login";
     }
 
     @RequestMapping(value = "/signup", method = RequestMethod.GET)
-    public ModelAndView signup() {
-        ModelAndView modelAndView = new ModelAndView();
-        RecipeUser user = new RecipeUser();
-        modelAndView.addObject("user", user);
-        modelAndView.setViewName("signup");
-        return modelAndView;
+    public String login() {
+        return "attempting to login";
     }
 
+
     @RequestMapping(value = "/signup", method = RequestMethod.POST)
-    public ModelAndView createNewUser(RecipeUser user, BindingResult bindingResult) {
+    public String createNewUser(RecipeUser user, BindingResult bindingResult) {
+        /*
         ModelAndView modelAndView = new ModelAndView();
         RecipeUser userExists = myRepo.findByRecipeUsername(user.getRecipeUsername());
         if (userExists != null) {
@@ -51,7 +50,9 @@ public class LoginController {
             modelAndView.setViewName("login");
 
         }
-        return modelAndView;
+
+         */
+        return "attempted to create new user";
     }
 
 }

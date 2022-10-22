@@ -15,10 +15,10 @@
     <br>
 </form>
     <H2>Or log in to an existing account:</H2>
-    <form action="#" th:action="@{/login}" th:object="${user}"  method="get">
-        <input type="text" name="username" id="existingusername" th:field="*{RecipeUsername}" placeholder="Existing user"/>
+    <form action="#"  method="get">
+        <input type="text" name="username" id="existingusername" placeholder="Existing user"/>
         <br>
-        <input type="text" name="password" id="existingpassword" th:value="*{RecipeUserPassword}" placeholder="User password"/>
+        <input type="text" name="password" id="existingpassword" placeholder="User password"/>
         <br>
         <input type="submit" value="Login"/>
     </form>
