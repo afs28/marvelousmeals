@@ -1,8 +1,8 @@
 package is.hi.hbv501g.hugbo.Persistence.Entities;
 
+import com.sun.istack.NotNull;
+
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * The main recipe user class, getters and setters.
@@ -10,15 +10,15 @@ import java.util.List;
  */
 
 @Entity
-//@Table(name="recipeusers")
-@Embeddable
+@Table(name="recipeuser")
 public class RecipeUser {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long recipeUserID;
-
+    private long recipeUserID;
+    @NotNull
     private String recipeUsername;
+    @NotNull
     private String recipeUserPassword;
 
     public RecipeUser() {
@@ -29,14 +29,18 @@ public class RecipeUser {
         this.recipeUserPassword = recipeUserPassword;
     }
 
+    public RecipeUser(long recipeUserID){
+        this.recipeUserID = recipeUserID;
+    }
+
     public long getRecipeUserID() {
         return recipeUserID;
     }
 
-    public void setRecipeUserID(Long recipeUserID) {
+    public void setRecipeUserID(long recipeUserID) {
         this.recipeUserID = recipeUserID;
     }
-
+    @Column(name = "recipeusername", unique = true)
     public String getRecipeUsername() {
         return recipeUsername;
     }
@@ -44,7 +48,7 @@ public class RecipeUser {
     public void setRecipeUsername(String recipeUsername) {
         this.recipeUsername = recipeUsername;
     }
-
+    @Column(name = "recipeuserpassword")
     public String getRecipeUserPassword() {
         return recipeUserPassword;
     }

@@ -1,13 +1,17 @@
 package is.hi.hbv501g.hugbo.Services;
 
 import is.hi.hbv501g.hugbo.Persistence.Entities.Recipe;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
 
 public interface RecipeService {
 
     List<Recipe> findAll();
-    Recipe findByID(long recipeID);
-    Recipe save(Recipe recipe);
+
+    List<Recipe> findByTitle(String title);
+
+    Recipe findByID(Long recipeID);
+    Recipe saveRecipe(Recipe newRecipe);
     void delete(Recipe recipe);
 }
