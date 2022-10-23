@@ -9,42 +9,45 @@
     <body>
     <h2>Welcome to Marvelous Meals.</h2>
     <ul>
-        <li><a href="signUpPage.html">Create account</a></li>
-        <li><a href="loginPage.html">Log into your account</a></li>
-        <li><a href="userPage.html">View your profile</a></li>
-        <li><a href="searchPage.html">Find a recipe!</a></li>
-        <li><a href="formRecipe.html">View recipe</a></li>
+        <li><a href="signUpPage.html">Create account (yet to be implemented)</a></li>
+        <li><a href="loginPage.html">Log into your account (yet to be implemented)</a></li>
+        <li><a href="userPage.html">View your profile (yet to be implemented)</a></li>
+        <li><a href="searchPage.html">Find a recipe! (yet to be implemented)</a></li>
+        <li><a href="formRecipe.html">View recipe (yet to be implemented)</a></li>
     </ul>
-    <div class="container">
-        <a class="btn btn-info" role="button" th:href="@{/create}">Add a new recipe</a>
+    <div>
+        <a th:href="@{/create}">Add a new recipe (works)</a>
+        <a th:href="@{/addComment}">Comment on a recipe (yet to be implemented)</a>
+        <a th:href="@{/giveRating}">Rate a recipe (yet to be implemented)</a>
+        <a th:href="@{/filter}">I will filter things for you!(yet to be implemented)</a>
     </div>
-    <table>
-        <thead>
+    <table style="border: 5px solid">
+        <thead style="border: 1px solid">
         <tr>
             <th hidden>recipeID</th>
-            <th>Title</th>
-            <th>Description</th>
-            <th>Difficulty Level</th>
-            <th>Allergy Factors</th>
-            <th>Comments</th>
-            <th>Ratings</th>
-            <th>Image of Recipe</th>
-            <th>For Number Of People</th>
-            <th>Preparation time</th>
+            <th style="border: 1px solid">Title</th>
+            <th style="border: 1px solid">Description</th>
+            <th style="border: 1px solid">Difficulty Level</th>
+            <th style="border: 1px solid">Allergy Factors</th>
+            <th style="border: 1px solid">Comments</th>
+            <th style="border: 1px solid">Ratings</th>
+            <th style="border: 1px solid">Image of Recipe</th>
+            <th style="border: 1px solid">For Number Of People</th>
+            <th style="border: 1px solid">Preparation time</th>
         </tr>
         </thead>
         <tbody>
-        <tr th:each="s : ${recipe}">
-            <td th:scope="col" th:text="${s.recipeID}" hidden></td>
-            <td th:scope="col" th:text="${s.title}"></td>
-            <td th:scope="col" th:text="${s.description}"></td>
-            <td th:scope="col" th:text="${s.difficultyLevel}"></td>
-            <td th:scope="col" th:text="${s.allergyFactors}"></td>
-            <td th:scope="col" th:text="${s.comments}"></td>
-            <td th:scope="col" th:text="${s.ratings}"></td>
-            <td th:scope="col" th:text="${s.imageOfRecipe}"></td>
-            <td th:scope="col" th:text="${s.forNumberOfPeople}"></td>
-            <td th:scope="col" th:text="${s.prepTime}"></td>
+        <tr th:each="recipe : ${recipe}">
+            <td style="border: 1px solid" th:scope="col" th:text="${recipe.recipeID}" hidden></td>
+            <td style="border: 1px solid" th:scope="col" th:text="${recipe.title}"></td>
+            <td style="border: 1px solid" th:scope="col" th:text="${recipe.description}"></td>
+            <td style="border: 1px solid" th:scope="col" th:text="${recipe.difficultyLevel}"></td>
+            <td style="border: 1px solid" th:scope="col" th:text="${recipe.allergyFactors}"></td>
+            <td style="border: 1px solid" th:scope="col" th:text="${recipe.comments}"></td>
+            <td style="border: 1px solid" th:scope="col" th:text="${recipe.ratings}"></td>
+            <td style="border: 1px solid" th:scope="col" th:text="${recipe.imageOfRecipe}"></td>
+            <td style="border: 1px solid" th:scope="col" th:text="${recipe.forNumberOfPeople}"></td>
+            <td style="border: 1px solid" th:scope="col" th:text="${recipe.prepTime}"></td>
         </tr>
         </tbody>
     </table>
