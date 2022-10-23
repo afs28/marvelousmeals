@@ -1,58 +1,64 @@
 package is.hi.hbv501g.hugbo.Controllers;
 
-import is.hi.hbv501g.hugbo.Persistence.Entities.RecipeUser;
-import is.hi.hbv501g.hugbo.Persistence.Repositories.RecipeUserRepository;
+
+import is.hi.hbv501g.hugbo.Services.RecipeService;
+import is.hi.hbv501g.hugbo.Services.RecipeUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.validation.BindingResult;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.servlet.ModelAndView;
+
+import javax.servlet.http.HttpSession;
 
 @Controller
 public class LoginController {
-    /*
-           https://www.djamware.com/post/5e32d450ad84a94e7885bbf9/spring-boot-tutorial-create-java-login-web-app-using-spring-security-and-eclipse
-     */
-    @Autowired
-    private RecipeUserRepository myRepo;
 
-    @RequestMapping(value="/welcome")
-    public static ModelAndView welcome() {
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("login");
-        return modelAndView;
-        //return "login";
+    @Autowired
+    RecipeService recipeService;
+    @Autowired
+    RecipeUserService recipeUserService;
+
+    @RequestMapping(value = "/login", method = RequestMethod.GET)
+    public String loginPage(HttpSession session, Model model) {
+        System.out.println("login");
+        displayLoginPage(session, model);
+        return "login";
     }
 
     @RequestMapping(value = "/signup", method = RequestMethod.GET)
-    public String login() {
-        return "attempting to login";
+    public String signUpPage(HttpSession session, Model model) {
+        System.out.println("signup");
+        displaySignUpPage(session, model);
+        return "signup";
     }
 
-
-    @RequestMapping(value = "/signup", method = RequestMethod.POST)
-    public String createNewUser(RecipeUser user, BindingResult bindingResult) {
-        /*
-        ModelAndView modelAndView = new ModelAndView();
-        RecipeUser userExists = myRepo.findByRecipeUsername(user.getRecipeUsername());
-        if (userExists != null) {
-            bindingResult
-                    .rejectValue("email", "error.user",
-                            "There is already a user registered with the username provided");
-        }
-        if (bindingResult.hasErrors()) {
-            modelAndView.setViewName("signup");
+    private void displaySignUpPage(HttpSession session, Model model) {
+        System.out.println("display signup page");
+        if(!session.isNew()) {
+            if(!(session.getAttribute("recipeuser") == null)) {
+                model.addAttribute("recipeuser", session.getAttribute("recipeuser"));
+                model.addAttribute("recipeUserLoggedIn", true);
+            } else {
+                model.addAttribute("recipeUserLoggedIn", false);
+            }
         } else {
-            myRepo.save(user);
-            modelAndView.addObject("successMessage", "User has been registered successfully");
-            modelAndView.addObject("user", new RecipeUser());
-            modelAndView.setViewName("login");
-
+            model.addAttribute("recipeUserLoggedIn", false);
         }
+    }
 
-         */
-        return "attempted to create new user";
+    private void displayLoginPage(HttpSession session, Model model) {
+        System.out.println("display login page");
+        if(!session.isNew()) {
+            if(!(session.getAttribute("recipeuser") == null)) {
+                model.addAttribute("recipeuser", session.getAttribute("recipeuser"));
+                model.addAttribute("recipeUserLoggedIn", true);
+            } else {
+                model.addAttribute("recipeUserLoggedIn", false);
+            }
+        } else {
+            model.addAttribute("recipeUserLoggedIn", false);
+        }
     }
 
 }

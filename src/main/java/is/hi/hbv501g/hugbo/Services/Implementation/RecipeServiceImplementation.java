@@ -2,20 +2,21 @@ package is.hi.hbv501g.hugbo.Services.Implementation;
 
 import is.hi.hbv501g.hugbo.Persistence.Entities.Recipe;
 import is.hi.hbv501g.hugbo.Persistence.Repositories.RecipeRepository;
+import is.hi.hbv501g.hugbo.Persistence.Repositories.RecipeUserRepository;
 import is.hi.hbv501g.hugbo.Services.RecipeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
 
 @Service
 public class RecipeServiceImplementation implements RecipeService {
-    private RecipeRepository recipeRepository;
+    @Autowired
+    RecipeRepository recipeRepository;
 
     @Autowired
-    public RecipeServiceImplementation(RecipeRepository recipeRepository){
-        this.recipeRepository = recipeRepository;
-    }
+    RecipeUserRepository recipeUserRepository;
 
 
     @Override
@@ -24,12 +25,18 @@ public class RecipeServiceImplementation implements RecipeService {
     }
 
     @Override
-    public Recipe findByID(long recipeID){
+    public List<Recipe> findByTitle(String title) {
+        return recipeRepository.findByTitle(title);
+    }
+
+
+    @Override
+    public Recipe findByID(Long recipeID){
         return recipeRepository.findByRecipeID(recipeID);
     }
 
     @Override
-    public Recipe save(Recipe recipe) {
+    public Recipe saveRecipe(Recipe recipe) {
         return recipeRepository.save(recipe);
     }
 
