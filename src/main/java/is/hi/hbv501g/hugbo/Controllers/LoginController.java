@@ -1,13 +1,17 @@
 package is.hi.hbv501g.hugbo.Controllers;
 
 
+import is.hi.hbv501g.hugbo.Persistence.Entities.RecipeUser;
+import is.hi.hbv501g.hugbo.Persistence.Repositories.RecipeUserRepository;
 import is.hi.hbv501g.hugbo.Services.RecipeService;
 import is.hi.hbv501g.hugbo.Services.RecipeUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpSession;
 
@@ -16,6 +20,10 @@ public class LoginController {
 
     @Autowired
     RecipeService recipeService;
+
+    @Autowired
+    private RecipeUserRepository recipeUserRepository;
+
     @Autowired
     RecipeUserService recipeUserService;
 
@@ -26,25 +34,13 @@ public class LoginController {
         return "login";
     }
 
-    @RequestMapping(value = "/signup", method = RequestMethod.GET)
-    public String signUpPage(HttpSession session, Model model) {
-        System.out.println("signup");
-        displaySignUpPage(session, model);
-        return "signup";
-    }
+    @PostMapping("/signup")
+    public String AddUser (@RequestParam String recipeUsername, @RequestParam String recipePassword) {
 
-    private void displaySignUpPage(HttpSession session, Model model) {
-        System.out.println("display signup page");
-        if(!session.isNew()) {
-            if(!(session.getAttribute("recipeuser") == null)) {
-                model.addAttribute("recipeuser", session.getAttribute("recipeuser"));
-                model.addAttribute("recipeUserLoggedIn", true);
-            } else {
-                model.addAttribute("recipeUserLoggedIn", false);
-            }
-        } else {
-            model.addAttribute("recipeUserLoggedIn", false);
-        }
+        RecipeUser newUser = new RecipeUser(recipeUsername, recipePassword);
+        newUser.setRecipeUserID(0l); // why can't this be skipped????
+        recipeUserRepository.save(newUser);
+        return "redirect:/";
     }
 
     private void displayLoginPage(HttpSession session, Model model) {
