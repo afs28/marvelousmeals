@@ -22,9 +22,11 @@ public class RecipeUser {
     private String recipeUserPassword;
 
     public RecipeUser() {
-
+        super();
+        // TODO Auto-generated constructor stub
     }
     public RecipeUser(String recipeUsername, String recipeUserPassword){
+        super();
         this.recipeUsername = recipeUsername;
         this.recipeUserPassword = recipeUserPassword;
     }

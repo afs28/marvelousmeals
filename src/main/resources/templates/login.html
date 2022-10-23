@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="https://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Sign up! ..or login to an existing account.</title>
+</head>
+<body>
+<h2>Sign up for an account here:</h2>
+<form action="signup" method="post">
+    <input type="text" name="recipeUsername" id="recipeUsername" placeholder="Account name"/>
+    <br>
+    <input type="text" name="recipePassword" id="recipePassword" placeholder="Password"/>
+    <br>
+    <input type="submit" value="Sign up"/>
+    <br>
+</form>
+<!--
+    <H2>Or log in to an existing account:</H2>
+    <form action="login"  method="post">
+        <input type="text" name="username" id="existingusername" placeholder="Existing user"/>
+        <br>
+        <input type="text" name="password" id="existingpassword" placeholder="User password"/>
+        <br>
+        <input type="submit" value="Login"/>
+    </form>
+-->
+</body>
+</html>

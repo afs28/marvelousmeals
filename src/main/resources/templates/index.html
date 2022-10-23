@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 <head>
     <Title>Marvelous Meals</Title>
     <meta charset="UTF-8">
@@ -9,17 +9,21 @@
     <body>
     <h2>Welcome to Marvelous Meals.</h2>
     <ul>
-        <li><a href="signUpPage.html">Create account (yet to be implemented)</a></li>
-        <li><a href="loginPage.html">Log into your account (yet to be implemented)</a></li>
+        <li><a href="/login">Create account</a></li>
+        <li><a href="/list">show all users</a></li>
+        <!--
         <li><a href="userPage.html">View your profile (yet to be implemented)</a></li>
         <li><a href="searchPage.html">Find a recipe! (yet to be implemented)</a></li>
         <li><a href="formRecipe.html">View recipe (yet to be implemented)</a></li>
+        -->
     </ul>
     <div>
-        <a th:href="@{/create}">Add a new recipe (works)</a>
+        <a th:href="@{/create}">Add a new recipe</a>
+        <!--
         <a th:href="@{/addComment}">Comment on a recipe (yet to be implemented)</a>
         <a th:href="@{/giveRating}">Rate a recipe (yet to be implemented)</a>
         <a th:href="@{/filter}">I will filter things for you!(yet to be implemented)</a>
+        -->
     </div>
     <table style="border: 5px solid">
         <thead style="border: 1px solid">
@@ -51,5 +55,9 @@
         </tr>
         </tbody>
     </table>
+    <form action="search" method="post">
+        <input type="text" name="toSearch" id="toSearch" placeholder=""/>
+        <input type="submit" value="search recipe database"/>
+    </form>
     </body>
 </html>
