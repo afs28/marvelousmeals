@@ -2,23 +2,14 @@ package is.hi.hbv501g.hugbo.Controllers;
 
 
 import is.hi.hbv501g.hugbo.Persistence.Entities.Recipe;
-import is.hi.hbv501g.hugbo.Persistence.Repositories.RecipeRepository;
 import is.hi.hbv501g.hugbo.Services.RecipeService;
-import is.hi.hbv501g.hugbo.Services.RecipeUserService;
-import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.*;
-
-import javax.naming.Binding;
-import javax.servlet.http.HttpSession;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 
 /**
@@ -33,6 +24,13 @@ public class RecipeController {
     @Autowired
     private RecipeService recipeService;
 
+    @RequestMapping(value = "/recipe", method = RequestMethod.GET)
+    @ResponseBody
+    public Model create2(Model model, @RequestParam String id) {
+        Recipe rep = recipeService.findByID(Long.parseLong(id));
+        model.addAttribute("recipe", rep);
+        return model;
+    }
 
 
 
