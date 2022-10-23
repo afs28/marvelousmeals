@@ -15,10 +15,13 @@ public class RecipeUser {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "recipeuserid")
     private long recipeUserID;
     @NotNull
+    @Column(name = "recipeusername")
     private String recipeUsername;
     @NotNull
+    @Column(name = "recipeuserpassword")
     private String recipeUserPassword;
 
     public RecipeUser() {

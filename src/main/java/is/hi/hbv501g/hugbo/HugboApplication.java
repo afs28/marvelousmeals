@@ -1,5 +1,11 @@
 package is.hi.hbv501g.hugbo;
 
+import is.hi.hbv501g.hugbo.Persistence.Repositories.CommentRepository;
+import is.hi.hbv501g.hugbo.Persistence.Repositories.RatingRepository;
+import is.hi.hbv501g.hugbo.Persistence.Repositories.RecipeRepository;
+import is.hi.hbv501g.hugbo.Persistence.Repositories.RecipeUserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -18,10 +24,27 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
     // this is team member Hrefna Karen Valgarðsdóttir (hkv5@hi.is)
     // branch testnation
 @SpringBootApplication
-public class HugboApplication {
+public class HugboApplication implements CommandLineRunner {
 
+    @Autowired
+    private RecipeRepository recipeRepository;
+
+    @Autowired
+    private CommentRepository commentRepository;
+
+    @Autowired
+    private RatingRepository ratingRepository;
+
+    @Autowired
+    private RecipeUserRepository recipeUserRepository;
     public static void main(String[] args) {
+
         SpringApplication.run(HugboApplication.class, args);
+    }
+
+    @Override
+    public void run(String... args) throws Exception {
+
     }
 
 }
