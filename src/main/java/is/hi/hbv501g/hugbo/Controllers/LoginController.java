@@ -18,11 +18,11 @@ public class LoginController {
     private RecipeUserRepository myRepo;
 
     @RequestMapping(value="/welcome")
-    public static String welcome() {
+    public static ModelAndView welcome() {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("login");
-        //return modelAndView;
-        return "login";
+        return modelAndView;
+        //return "login";
     }
 
     @RequestMapping(value = "/signup", method = RequestMethod.GET)
