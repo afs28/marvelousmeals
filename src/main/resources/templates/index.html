@@ -43,7 +43,9 @@
         <tbody>
         <tr th:each="recipe : ${recipe}">
             <td style="border: 1px solid" th:scope="col" th:text="${recipe.recipeID}" hidden></td>
-            <td style="border: 1px solid" th:scope="col" th:text="${recipe.title}"></td>
+            <td style="border: 1px solid" th:scope="col" >
+                <a th:href="@{/recipe(id=${recipe.recipeID})}" th:text="${recipe.title}"></a>
+            </td>
             <td style="border: 1px solid" th:scope="col" th:text="${recipe.description}"></td>
             <td style="border: 1px solid" th:scope="col" th:text="${recipe.difficultyLevel}"></td>
             <td style="border: 1px solid" th:scope="col" th:text="${recipe.allergyFactors}"></td>
