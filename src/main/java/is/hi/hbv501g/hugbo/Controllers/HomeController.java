@@ -35,8 +35,4 @@ public class HomeController {
         model.addAttribute("recipe", recipeService.saveRecipe(recipe));
         return "redirect:/";
     }
-
-
-
-
 }

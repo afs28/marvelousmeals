@@ -7,23 +7,15 @@ import javax.persistence.*;
 public class Recipe {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "recipeid")
     private Long recipeID;
-
     private String title;
-
     private String description;
-    @Column(name = "difficultylevel")
     private String difficultyLevel;
-    @Column(name = "allergyfactors")
     private String allergyFactors;
     private String comments;
     private Double ratings;
-    @Column(name = "imageofrecipe")
     private String imageOfRecipe;
-    @Column(name = "fornumberofpeople")
     private Integer forNumberOfPeople;
-    @Column(name = "preptime")
     private Integer prepTime;
 
     public Recipe(){
