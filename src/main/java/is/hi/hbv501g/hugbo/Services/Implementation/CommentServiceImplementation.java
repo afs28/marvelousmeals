@@ -1,4 +1,28 @@
 package is.hi.hbv501g.hugbo.Services.Implementation;
 
-public class CommentServiceImplementation {
+import is.hi.hbv501g.hugbo.Persistence.Entities.RecipeComments;
+import is.hi.hbv501g.hugbo.Persistence.Repositories.CommentRepository;
+import is.hi.hbv501g.hugbo.Persistence.Repositories.RecipeRepository;
+import is.hi.hbv501g.hugbo.Persistence.Repositories.RecipeUserRepository;
+import is.hi.hbv501g.hugbo.Services.CommentService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Service
+public class CommentServiceImplementation implements CommentService {
+    @Autowired
+    CommentRepository commentRepository;
+    @Autowired
+    RecipeRepository recipeRepository;
+    @Autowired
+    RecipeUserRepository recipeUserRepository;
+
+    @Override
+    public RecipeComments saveComment(RecipeComments newComment) {
+        return commentRepository.save(newComment);
+    }
+    @Override
+    public void delete(RecipeComments recipeComments){
+        commentRepository.delete(recipeComments);
+    }
 }
