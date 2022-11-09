@@ -5,6 +5,7 @@
   <title>Sign up! ..or login to an existing account.</title>
 </head>
 <body>
+<input action="action" type="button" onclick="history.go(-1);" value="Back"/>
 <h2>Sign up for an account here:</h2>
 <form action="/loginPage" th:action="@{/login}" th:object="${recipeuser}"  method="post">
   <input type="text" name="RecipeUsername" id="RecipeUsername" th:field="*{RecipeUsername}" placeholder="Account name"/>
