@@ -17,5 +17,34 @@
     <p th:text="${recipe.forNumberOfPeople}"></p>
     <p th:text="${recipe.prepTime}"></p>
   </div>
+  <div>
+    <form class="flex-box">
+      <label>
+        Leave a comment here!
+      </label>
+      <label>Username:</label>
+      <input class="name-input">
+      <textarea class="comment-section" placeholder="Write your comment here!" style="text-align: left"></textarea>
+      <button class="submit-comment-btn">
+        <a th:href="@{/submit}">Submit</a>
+      </button>
+    </form>
+  </div>
+  <style>
+    .flex-box {
+      display: flex;
+      flex-direction: column;
+    }
+    .comment-section {
+      width: 300px;
+      height: 60px;
+    }
+    .name-input {
+      width: 150px;
+    }
+    .submit-comment-btn {
+      width: 60px;
+    }
+  </style>
 </body>
 </html>

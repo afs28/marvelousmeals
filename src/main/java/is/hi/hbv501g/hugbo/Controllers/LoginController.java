@@ -27,22 +27,46 @@ public class LoginController {
     @Autowired
     RecipeUserService recipeUserService;
 
-    @RequestMapping(value = "/login", method = RequestMethod.GET)
+    /*
+        Notkun: s/loginPage
+        Fyrir:  s er síðan sem að verkefnið er á.
+                Það er notað GET skipun (á loginPage)
+        Eftir:  skilar login/signup síðuni
+     */
+    @RequestMapping(value = "/loginPage", method = RequestMethod.GET)
     public String loginPage(HttpSession session, Model model) {
-        System.out.println("login");
-        displayLoginPage(session, model);
+        //System.out.println("login");
+        //displayLoginPage(session, model);
         return "login";
+    }
+
+    @PostMapping("/login")
+    public String login(@RequestParam String username, @RequestParam String password) {
+        System.out.println("login");
+        //displayLoginPage(session, model);
+    /*
+        UsernamePasswordAuthenticationToken authRequest = new UsernamePasswordAuthenticationToken(username, password);
+
+        // Authenticate the user
+        Authentication authentication = authenticationManager.authenticate(authRequest);
+        SecurityContext securityContext = SecurityContextHolder.getContext();
+        securityContext.setAuthentication(authentication);
+
+        // Create a new session and add the security context.
+        HttpSession session = request.getSession(true);
+        session.setAttribute("SPRING_SECURITY_CONTEXT", securityContext);
+        */
+        return "redirect:/";
     }
 
     @PostMapping("/signup")
     public String AddUser (@RequestParam String recipeUsername, @RequestParam String recipePassword) {
 
         RecipeUser newUser = new RecipeUser(recipeUsername, recipePassword);
-        newUser.setRecipeUserID(0l); // why can't this be skipped????
         recipeUserRepository.save(newUser);
         return "redirect:/";
     }
-
+/*
     private void displayLoginPage(HttpSession session, Model model) {
         System.out.println("display login page");
         if(!session.isNew()) {
@@ -56,5 +80,5 @@ public class LoginController {
             model.addAttribute("recipeUserLoggedIn", false);
         }
     }
-
+*/
 }
