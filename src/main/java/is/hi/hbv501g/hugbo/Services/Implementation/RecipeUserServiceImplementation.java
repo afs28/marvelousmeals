@@ -33,17 +33,16 @@ public class RecipeUserServiceImplementation implements RecipeUserService {
 
 
     @Override
-    public RecipeUser findByRecipeUsername(String recipeUsername){
+    public RecipeUser findByRecipeUserByUsername(String recipeUsername){
         return recipeUserRepository.findByRecipeUsername(recipeUsername);
     }
 
     @Override
     public RecipeUser login(RecipeUser recipeUser){
-        RecipeUser doesExist = findByRecipeUsername(recipeUser.getRecipeUsername());
-        if(doesExist != null){
-            if(doesExist.getRecipeUserPassword().equals(recipeUser.getRecipeUserPassword())){
-                return doesExist;
-            }
+        RecipeUser doesExists = findByRecipeUserByUsername(recipeUser.getRecipeUsername());
+        if(doesExists != null) {
+            if(doesExists.getRecipeUserPassword().equals(recipeUser.getRecipeUserPassword()));
+                return doesExists;
         }
         return null;
     }

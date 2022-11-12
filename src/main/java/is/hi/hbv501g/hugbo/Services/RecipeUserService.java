@@ -8,6 +8,7 @@ public interface RecipeUserService {
     RecipeUser save(RecipeUser recipeUser);
     void delete(RecipeUser recipeUser);
     List<RecipeUser> findAll();
-    RecipeUser findByRecipeUsername(String recipeUsername);
+    // find user by username
+    RecipeUser findByRecipeUserByUsername(String recipeUsername);
     RecipeUser login(RecipeUser recipeUser);
 }

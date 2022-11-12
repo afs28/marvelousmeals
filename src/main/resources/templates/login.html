@@ -6,19 +6,19 @@
 </head>
 <body>
 <h2>Sign up for an account here:</h2>
-<form action="signup" method="post">
-    <input type="text" name="recipeUsername" placeholder="Account name"/>
+<form th:action="@{/signup}" th:object="${recipeUser}" method="post">
+    <input type="text" name="recipeUsername" th:field="*{recipeUsername}" placeholder="Account name"/>
     <br>
-    <input type="text" name="recipePassword" placeholder="Password"/>
+    <input type="text" name="recipePassword" th:value="*{recipeUserPassword}" placeholder="Password"/>
     <br>
     <input type="submit" value="Sign up"/>
     <br>
 </form>
     <H2>Or log in to an existing account:</H2>
-    <form action="login"  method="post">
-        <input type="text" name="username" placeholder="Existing user"/>
+    <form th:action="@{/login}" th:object="${recipeUser}" method="post">
+        <input type="text" name="username" th:field="*{recipeUsername}" placeholder="Existing user"/>
         <br>
-        <input type="text" name="password" placeholder="User password"/>
+        <input type="text" name="password" th:value="*{recipeUserPassword}" placeholder="User password"/>
         <br>
         <input type="submit" value="Login"/>
     </form>

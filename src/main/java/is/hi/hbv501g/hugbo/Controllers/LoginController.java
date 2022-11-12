@@ -8,10 +8,10 @@ import is.hi.hbv501g.hugbo.Services.RecipeUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpSession;
 
@@ -27,58 +27,42 @@ public class LoginController {
     @Autowired
     RecipeUserService recipeUserService;
 
+
     /*
         Notkun: s/loginPage
         Fyrir:  s er síðan sem að verkefnið er á.
                 Það er notað GET skipun (á loginPage)
         Eftir:  skilar login/signup síðuni
      */
-    @RequestMapping(value = "/loginPage", method = RequestMethod.GET)
-    public String loginPage(HttpSession session, Model model) {
-        //System.out.println("login");
-        //displayLoginPage(session, model);
+    @RequestMapping(value = "/login", method = RequestMethod.GET)
+    public String loginPage(HttpSession session, Model model, RecipeUser recipeUser) {
         return "login";
     }
 
+
     @PostMapping("/login")
-    public String login(@RequestParam String username, @RequestParam String password) {
-        System.out.println("login");
-        //displayLoginPage(session, model);
-    /*
-        UsernamePasswordAuthenticationToken authRequest = new UsernamePasswordAuthenticationToken(username, password);
-
-        // Authenticate the user
-        Authentication authentication = authenticationManager.authenticate(authRequest);
-        SecurityContext securityContext = SecurityContextHolder.getContext();
-        securityContext.setAuthentication(authentication);
-
-        // Create a new session and add the security context.
-        HttpSession session = request.getSession(true);
-        session.setAttribute("SPRING_SECURITY_CONTEXT", securityContext);
-        */
+    public String login(RecipeUser recipeUser, BindingResult result, Model model, HttpSession session) {
+        if(result.hasErrors()) {
+            return "login";
+        }
+        RecipeUser exists = recipeUserService.login(recipeUser);
+        if(exists != null) {
+            session.setAttribute("LoggedInUser", exists);
+            model.addAttribute("LoggedInUser", exists);
+            return "index";
+        }
         return "redirect:/";
     }
 
     @PostMapping("/signup")
-    public String AddUser (@RequestParam String recipeUsername, @RequestParam String recipePassword) {
-
-        RecipeUser newUser = new RecipeUser(recipeUsername, recipePassword);
-        recipeUserRepository.save(newUser);
+    public String AddUser (RecipeUser recipeUser, BindingResult result, Model model) {
+        if (result.hasErrors()) {
+            return "redirect:/login";
+        }
+        RecipeUser exists = recipeUserService.findByRecipeUserByUsername(recipeUser.getRecipeUsername());
+        if(exists == null) {
+            recipeUserRepository.save(exists);
+        }
         return "redirect:/";
     }
-/*
-    private void displayLoginPage(HttpSession session, Model model) {
-        System.out.println("display login page");
-        if(!session.isNew()) {
-            if(!(session.getAttribute("recipeuser") == null)) {
-                model.addAttribute("recipeuser", session.getAttribute("recipeuser"));
-                model.addAttribute("recipeUserLoggedIn", true);
-            } else {
-                model.addAttribute("recipeUserLoggedIn", false);
-            }
-        } else {
-            model.addAttribute("recipeUserLoggedIn", false);
-        }
-    }
-*/
 }
