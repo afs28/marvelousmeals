@@ -26,7 +26,7 @@ public class RecipeController {
 
     @RequestMapping(value = "/recipe", method = RequestMethod.GET)
     @ResponseBody
-    public Model create2(Model model, @RequestParam String id) {
+    public Model displayRecipe(Model model, @RequestParam String id) {
         Recipe rep = recipeService.findByID(Long.parseLong(id));
         model.addAttribute("recipe", rep);
         return model;

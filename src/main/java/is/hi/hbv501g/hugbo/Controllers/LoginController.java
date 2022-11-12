@@ -48,7 +48,7 @@ public class LoginController {
         RecipeUser exists = recipeUserService.login(recipeUser);
         if(exists != null) {
             session.setAttribute("LoggedInUser", exists);
-            model.addAttribute("LoggedInUser", exists);
+            //model.addAttribute("LoggedInUser", exists);
             return "index";
         }
         return "redirect:/";
@@ -59,7 +59,7 @@ public class LoginController {
         if (result.hasErrors()) {
             return "redirect:/login";
         }
-        RecipeUser exists = recipeUserService.findByRecipeUserByUsername(recipeUser.getRecipeUsername());
+        RecipeUser exists = recipeUserService.findByRecipeUsername(recipeUser.getRecipeUsername());
         if(exists == null) {
             recipeUserRepository.save(exists);
         }

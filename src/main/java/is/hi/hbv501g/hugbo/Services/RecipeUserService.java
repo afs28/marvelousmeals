@@ -7,8 +7,12 @@ import java.util.List;
 public interface RecipeUserService {
     RecipeUser save(RecipeUser recipeUser);
     void delete(RecipeUser recipeUser);
+
+    void changePassword(RecipeUser recipeUser, String newPassword);
+
     List<RecipeUser> findAll();
     // find user by username
-    RecipeUser findByRecipeUserByUsername(String recipeUsername);
+    RecipeUser findByRecipeUsername(String recipeUsername);
     RecipeUser login(RecipeUser recipeUser);
+
 }

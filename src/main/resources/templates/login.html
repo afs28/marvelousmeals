@@ -5,6 +5,7 @@
     <title>Sign up! ..or login to an existing account.</title>
 </head>
 <body>
+<a href="/">Homepage</a>
 <h2>Sign up for an account here:</h2>
 <form th:action="@{/signup}" th:object="${recipeUser}" method="post">
     <input type="text" name="recipeUsername" th:field="*{recipeUsername}" placeholder="Account name"/>
