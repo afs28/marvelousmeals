@@ -1,10 +1,9 @@
 package is.hi.hbv501g.hugbo.Services.Implementation;
 // https://stackoverflow.com/questions/48371540/spring-security-the-dependencies-of-some-of-the-beans-in-the-application-contex
-
+/*
 import is.hi.hbv501g.hugbo.Persistence.Entities.RecipeUser;
 import is.hi.hbv501g.hugbo.Persistence.Repositories.RecipeUserRepository;
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -16,7 +15,7 @@ import java.util.List;
 @Service
 @AllArgsConstructor
 public class UserDetailsServiceImpl implements UserDetailsService {
-    @Autowired
+
     private RecipeUserRepository recipeUserRepository;
     @Override
     public UserDetails loadUserByUsername(final String username) {
@@ -39,3 +38,4 @@ public class UserDetailsServiceImpl implements UserDetailsService {
                 authorities);
     }
 }
+ */

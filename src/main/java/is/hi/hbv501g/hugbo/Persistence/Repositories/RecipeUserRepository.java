@@ -17,4 +17,6 @@ public interface RecipeUserRepository extends JpaRepository<RecipeUser, Long> {
     void delete(RecipeUser recipeUser);
     List<RecipeUser> findAll();
     RecipeUser findByRecipeUsername(String recipeUsername);
+
+    RecipeUser findByRecipeUserID(Long id);
 }

@@ -26,6 +26,12 @@ public class RecipeUserServiceImplementation implements RecipeUserService {
         recipeUserRepository.delete(recipeUser);
     }
 
+
+    @Override
+    public void changePassword(RecipeUser recipeUser, String newPassword) {
+        recipeUser.setRecipeUserPassword(newPassword);
+    }
+
     @Override
     public List<RecipeUser> findAll(){
         return recipeUserRepository.findAll();
@@ -39,12 +45,16 @@ public class RecipeUserServiceImplementation implements RecipeUserService {
 
     @Override
     public RecipeUser login(RecipeUser recipeUser){
-        RecipeUser doesExist = findByRecipeUsername(recipeUser.getRecipeUsername());
-        if(doesExist != null){
-            if(doesExist.getRecipeUserPassword().equals(recipeUser.getRecipeUserPassword())){
-                return doesExist;
-            }
+        RecipeUser doesExists = findByRecipeUsername(recipeUser.getRecipeUsername());
+        if(doesExists != null) {
+            if(doesExists.getRecipeUserPassword().equals(recipeUser.getRecipeUserPassword()));
+                return doesExists;
         }
         return null;
+    }
+
+    @Override
+    public RecipeUser findByRecipeUserID(long id) {
+        return recipeUserRepository.findByRecipeUserID(id);
     }
 }

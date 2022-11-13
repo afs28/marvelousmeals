@@ -5,7 +5,6 @@
     <title>view recipe</title>
 </head>
 <body>
-<input action="action" type="button" onclick="history.go(-1);" value="Back"/>
   <div th:object="${recipe}">
     <h1 th:text="${recipe.title}"></h1>
     <p th:text="${recipe.description}"></p>
@@ -18,40 +17,31 @@
     <p th:text="${recipe.prepTime}"></p>
   </div>
   <div>
-    <form class="flex-box">
+    <form th:action="@{/submit}" method="post" class="flex-box">
       <label>
-        Leave a comment and a rating here!
+        Leave a comment here!
       </label>
       <label>Username:</label>
-      <div>
-        <input class="name-input">
-        <label>Rate:</label>
-        <input class="rating-section" placeholder="" style="text-align: left"></input>
-      </div>
-      <textarea class="comment-section" placeholder="Write your comment here!" style="text-align: left"></textarea>
-      <button class="submit-comment-btn">
-        <a th:href="@{/submit}">Submit</a>
-      </button>
+      <input class="name-input" name="recipeUsername">
+      <textarea class="comment-section" name="recipeComment" placeholder="Write your comment here!" style="text-align: left"></textarea>
+      <input type="submit" value="submit"/>
     </form>
   </div>
-<style>
-  .flex-box {
-    display: flex;
-    flex-direction: column;
-  }
-  .comment-section {
-    width: 300px;
-    height: 60px;
-  }
-  .rating-section {
-    width: 100px;
-  }
-  .name-input {
-    width: 150px;
-  }
-  .submit-comment-btn {
-    width: 60px;
-  }
-</style>
+  <style>
+    .flex-box {
+      display: flex;
+      flex-direction: column;
+    }
+    .comment-section {
+      width: 300px;
+      height: 60px;
+    }
+    .name-input {
+      width: 150px;
+    }
+    .submit-comment-btn {
+      width: 60px;
+    }
+  </style>
 </body>
 </html>
