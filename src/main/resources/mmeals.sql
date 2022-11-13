@@ -34,8 +34,8 @@ CREATE TABLE IF NOT EXISTS recipecomment (
                                                             REFERENCES recipe(recipeID)
 );
 
-DROP TABLE IF EXISTS public.reciperating;
-CREATE TABLE IF NOT EXISTS public.reciperating (
+DROP TABLE IF EXISTS reciperating;
+CREATE TABLE IF NOT EXISTS reciperating (
                                                     ratingID SERIAL,
                                                     reciperating VARCHAR,
                                                     --userID INT,

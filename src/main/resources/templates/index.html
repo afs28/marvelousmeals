@@ -1,12 +1,24 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+
 <head>
     <Title>Marvelous Meals</Title>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, shrink-to-fit=no"
           name="viewport">
+    <script th:src="@{jquery-3.6.1.min.js}"></script>
+
+    <!-- filter -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.css">
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.js"></script>
+    <script>
+        $(document).ready( function () {
+            $('#all_recipes').DataTable();
+        } );
+    </script>
 </head>
     <body>
+
     <h2>Welcome to Marvelous Meals.</h2>
     <ul>
         <li><a href="/login">Create account</a></li>
@@ -26,8 +38,8 @@
         <a th:href="@{/filter}">I will filter things for you!(yet to be implemented)</a>
         -->
     </div>
-    <table style="border: 5px solid">
-        <thead style="border: 1px solid">
+    <table id="all_recipes" class="display">
+        <thead>
         <tr>
             <th hidden>recipeID</th>
             <th style="border: 1px solid">Title</th>
