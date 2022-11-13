@@ -17,16 +17,14 @@
     <p th:text="${recipe.prepTime}"></p>
   </div>
   <div>
-    <form class="flex-box">
+    <form th:action="@{/submit}" method="post" class="flex-box">
       <label>
         Leave a comment here!
       </label>
       <label>Username:</label>
-      <input class="name-input">
-      <textarea class="comment-section" placeholder="Write your comment here!" style="text-align: left"></textarea>
-      <button class="submit-comment-btn">
-        <a th:href="@{/submit}">Submit</a>
-      </button>
+      <input class="name-input" name="recipeUsername">
+      <textarea class="comment-section" name="recipeComment" placeholder="Write your comment here!" style="text-align: left"></textarea>
+      <input type="submit" value="submit"/>
     </form>
   </div>
   <style>
