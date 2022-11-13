@@ -7,7 +7,7 @@
 <body>
   <div th:object="${recipe}">
     <h1 th:text="${recipe.title}"></h1>
-    <p th:text="${recipe.description}"></p>
+    <pre th:text="${recipe.description}"></pre>
     <p th:text="${recipe.difficultyLevel}"></p>
     <p th:text="${recipe.allergyFactors}"></p>
     <p th:text="${recipe.comments}"></p>
@@ -53,6 +53,10 @@
     }
     .submit-button{
       width: 60px;
+    }
+
+    body {
+      font-family: Arial;
     }
   </style>
 </body>

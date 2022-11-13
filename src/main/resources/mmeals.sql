@@ -43,8 +43,8 @@ CREATE TABLE IF NOT EXISTS reciperating (
                                                     recipeID INT,
                                                     PRIMARY KEY (ratingID),
                                                     --CONSTRAINT fk_user
-                                                    --FOREIGN KEY(userID)
-                                                    --REFERENCES recipeuser(recipeuserID),
+                                                        --FOREIGN KEY(userID)
+                                                            --REFERENCES recipeuser(recipeuserID),
                                                     CONSTRAINT fk_recipe
                                                         FOREIGN KEY(recipeID)
                                                             REFERENCES recipe(recipeID)
