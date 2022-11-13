@@ -5,6 +5,34 @@
     <title>Sign up! ..or login to an existing account.</title>
 </head>
 <body>
+<a href="/">Homepage</a>
+<h2>Sign up for an account here:</h2>
+<form th:action="@{/signup}" th:object="${recipeUser}" method="post">
+    <input type="text" name="recipeUsername" th:field="*{recipeUsername}" placeholder="Account name"/>
+    <br>
+    <input type="text" name="recipePassword" th:value="*{recipeUserPassword}" placeholder="Password"/>
+    <br>
+    <input type="submit" value="Sign up"/>
+    <br>
+</form>
+<H2>Or log in to an existing account:</H2>
+<form th:action="@{/login}" th:object="${recipeUser}" method="post">
+    <input type="text" name="username" th:field="*{recipeUsername}" placeholder="Existing user"/>
+    <br>
+    <input type="text" name="password" th:value="*{recipeUserPassword}" placeholder="User password"/>
+    <br>
+    <input type="submit" value="Login"/>
+</form>
+</body>
+</html>
+<!--
+<!DOCTYPE html>
+<html xmlns:th="https://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Sign up! ..or login to an existing account.</title>
+</head>
+<body>
 <input action="action" type="button" onclick="history.go(-1);" value="Back"/>
 <h2>Sign up for an account here:</h2>
 <form action="signup" method="post">
@@ -24,4 +52,7 @@
         <input type="submit" value="Login"/>
     </form>
 </body>
+
+
 </html>
+-->
