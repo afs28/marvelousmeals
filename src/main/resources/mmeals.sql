@@ -18,13 +18,13 @@ CREATE TABLE IF NOT EXISTS recipeuser (
                                           recipeUserPassword VARCHAR NOT NULL,
                                           PRIMARY KEY (recipeUserID)
     );
-DROP TABLE IF EXISTS public.recipecomment;
-CREATE TABLE IF NOT EXISTS public.recipecomment (
+DROP TABLE IF EXISTS recipecomment;
+CREATE TABLE IF NOT EXISTS recipecomment (
                                                     commentID SERIAL,
-                                                    recipecomment VARCHAR,
+                                                    mycomment VARCHAR,
                                                     --userID INT,
                                                     nickname VARCHAR,
-                                                    recipeID INT,
+                                                    recipeID INT NOT NULL,
                                                     PRIMARY KEY (commentID),
                                                     --CONSTRAINT fk_user
                                                         --FOREIGN KEY(userID)

@@ -15,4 +15,5 @@ public interface RecipeUserService {
     RecipeUser findByRecipeUsername(String recipeUsername);
     RecipeUser login(RecipeUser recipeUser);
 
+    RecipeUser findByRecipeUserID(long id);
 }

@@ -45,7 +45,6 @@ public class RecipeUser {
     public void setRecipeUserID(long recipeUserID) {
         this.recipeUserID = recipeUserID;
     }
-    @Column(name = "recipeusername", unique = true)
     public String getRecipeUsername() {
         return recipeUsername;
     }
@@ -53,7 +52,6 @@ public class RecipeUser {
     public void setRecipeUsername(String recipeUsername) {
         this.recipeUsername = recipeUsername;
     }
-    @Column(name = "recipeuserpassword")
     public String getRecipeUserPassword() {
         return recipeUserPassword;
     }
