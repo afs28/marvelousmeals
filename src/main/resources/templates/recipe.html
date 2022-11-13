@@ -24,7 +24,16 @@
       <label>Username:</label>
       <input class="name-input" name="recipeUsername">
       <textarea class="comment-section" name="recipeComment" placeholder="Write your comment here!" style="text-align: left"></textarea>
-      <input type="submit" value="submit"/>
+      <input class="submit-button" type="submit" value="submit"/>
+    </form>
+    <form th:action="@{/Rsubmit}" method="post" class="flex-box">
+      <label>
+        Leave a rating here!
+      </label>
+      <label>Username:</label>
+      <input class="name-input" name="recipeUsername">
+      <input class="rating-section" name="recipeRating" placeholder="Write your rating here!" style="text-align: left"></input>
+      <input class="submit-button" type="submit" value="submit"/>
     </form>
   </div>
   <style>
@@ -36,10 +45,13 @@
       width: 300px;
       height: 60px;
     }
+    .rating-section {
+      width: 100px;
+    }
     .name-input {
       width: 150px;
     }
-    .submit-comment-btn {
+    .submit-button{
       width: 60px;
     }
   </style>
