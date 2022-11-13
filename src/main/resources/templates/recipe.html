@@ -7,13 +7,20 @@
 <body>
   <div th:object="${recipe}">
     <h1 th:text="${recipe.title}"></h1>
+    <h5>Here is the recipe:</h5>
     <pre th:text="${recipe.description}"></pre>
+    <h5>Difficulty level:</h5>
     <p th:text="${recipe.difficultyLevel}"></p>
+    <h5>Allergy Factors:</h5>
     <p th:text="${recipe.allergyFactors}"></p>
+    <h5>Author's comments:</h5>
     <p th:text="${recipe.comments}"></p>
+    <h5>Author's rating:</h5>
     <p th:text="${recipe.ratings}"></p>
     <p th:text="${recipe.imageOfRecipe}"></p>
+    <h5>This recipe is suitable for(number of people):</h5>
     <p th:text="${recipe.forNumberOfPeople}"></p>
+    <h5>Time(minutes):</h5>
     <p th:text="${recipe.prepTime}"></p>
   </div>
   <div>
