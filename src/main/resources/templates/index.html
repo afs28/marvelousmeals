@@ -11,11 +11,7 @@
     <!-- filter -->
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.css">
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.js"></script>
-    <script>
-        $(document).ready( function () {
-            $('#all_recipes').DataTable();
-        } );
-    </script>
+
 </head>
     <body>
 
@@ -74,5 +70,11 @@
         <input type="text" name="toSearch" id="toSearch" placeholder=""/>
         <input type="submit" value="search recipe database"/>
     </form>
+
+    <script>
+        $(document).ready( function () {
+            $('#all_recipes').DataTable();
+        } );
+    </script>
     </body>
 </html>
