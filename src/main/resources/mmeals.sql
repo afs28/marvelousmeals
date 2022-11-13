@@ -33,3 +33,19 @@ CREATE TABLE IF NOT EXISTS recipecomment (
                                                         FOREIGN KEY(recipeID)
                                                             REFERENCES recipe(recipeID)
 );
+
+DROP TABLE IF EXISTS public.reciperating;
+CREATE TABLE IF NOT EXISTS public.reciperating (
+                                                    ratingID SERIAL,
+                                                    reciperating VARCHAR,
+                                                    --userID INT,
+                                                    nickname VARCHAR,
+                                                    recipeID INT,
+                                                    PRIMARY KEY (ratingID),
+                                                    --CONSTRAINT fk_user
+                                                    --FOREIGN KEY(userID)
+                                                    --REFERENCES recipeuser(recipeuserID),
+                                                    CONSTRAINT fk_recipe
+                                                        FOREIGN KEY(recipeID)
+                                                            REFERENCES recipe(recipeID)
+    );
