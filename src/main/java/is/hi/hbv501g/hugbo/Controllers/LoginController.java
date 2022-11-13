@@ -49,20 +49,21 @@ public class LoginController {
         if(exists != null) {
             session.setAttribute("LoggedInUser", exists);
             //model.addAttribute("LoggedInUser", exists);
-            return "index";
+            return "redirect:/";
         }
-        return "redirect:/";
+        return "login";
     }
 
     @PostMapping("/signup")
     public String AddUser (RecipeUser recipeUser, BindingResult result, Model model) {
         if (result.hasErrors()) {
-            return "redirect:/login";
+            return "login";
         }
         RecipeUser exists = recipeUserService.findByRecipeUsername(recipeUser.getRecipeUsername());
         if(exists == null) {
-            recipeUserRepository.save(exists);
+            recipeUserRepository.save(recipeUser);
+            return "redirect:/";
         }
-        return "redirect:/";
+        return "login";
     }
 }

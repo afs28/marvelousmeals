@@ -10,7 +10,7 @@
 <form th:action="@{/signup}" th:object="${recipeUser}" method="post">
     <input type="text" name="recipeUsername" th:field="*{recipeUsername}" placeholder="Account name"/>
     <br>
-    <input type="text" name="recipePassword" th:value="*{recipeUserPassword}" placeholder="Password"/>
+    <input type="text" name="recipePassword" th:field="*{recipeUserPassword}" placeholder="Password"/>
     <br>
     <input type="submit" value="Sign up"/>
     <br>
@@ -19,7 +19,7 @@
 <form th:action="@{/login}" th:object="${recipeUser}" method="post">
     <input type="text" name="username" th:field="*{recipeUsername}" placeholder="Existing user"/>
     <br>
-    <input type="text" name="password" th:value="*{recipeUserPassword}" placeholder="User password"/>
+    <input type="text" name="password" th:field="*{recipeUserPassword}" placeholder="User password"/>
     <br>
     <input type="submit" value="Login"/>
 </form>
