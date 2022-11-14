@@ -44,4 +44,13 @@ public class RecipeServiceImplementation implements RecipeService {
     public void delete(Recipe recipe){
         recipeRepository.delete(recipe);
     }
+
+    @Override
+    public Recipe editARecipe(Recipe recipe, String title, String description, String difficultyLevel, String allergyFactors) {
+        recipe.setTitle(title);
+        recipe.setDescription(description);
+        recipe.setDifficultyLevel(difficultyLevel);
+        recipe.setAllergyFactors(allergyFactors);
+        return recipeRepository.save(recipe);
+    }
 }

@@ -14,4 +14,6 @@ public interface RecipeService {
     Recipe findByID(Long recipeID);
     Recipe saveRecipe(Recipe newRecipe);
     void delete(Recipe recipe);
+
+    Recipe editARecipe(Recipe recipe, String title, String description, String difficultyLevel, String allergyFactors);
 }

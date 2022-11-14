@@ -24,6 +24,9 @@
     <p th:text="${recipe.prepTime}"></p>
   </div>
   <div>
+    <a th:href="@{/edit-recipe}" method="get">Edit Recipe</a>
+  </div>
+  <div>
     <form th:action="@{/submit}" method="post" class="flex-box">
       <label>
         Leave a comment here!
