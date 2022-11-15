@@ -3,8 +3,10 @@ package is.hi.hbv501g.hugbo.Controllers;
 
 import is.hi.hbv501g.hugbo.Persistence.Entities.Recipe;
 import is.hi.hbv501g.hugbo.Persistence.Entities.RecipeComments;
+import is.hi.hbv501g.hugbo.Persistence.Entities.RecipeRatings;
 import is.hi.hbv501g.hugbo.Persistence.Entities.RecipeUser;
 import is.hi.hbv501g.hugbo.Persistence.Repositories.CommentRepository;
+import is.hi.hbv501g.hugbo.Persistence.Repositories.RatingRepository;
 import is.hi.hbv501g.hugbo.Services.CommentService;
 import is.hi.hbv501g.hugbo.Services.RecipeService;
 import is.hi.hbv501g.hugbo.Services.RecipeUserService;
@@ -13,7 +15,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 /**
@@ -33,16 +34,17 @@ public class RecipeController {
     @Autowired
     private CommentRepository commentRepository;
     @Autowired
+    private RatingRepository ratingRepository;
+    @Autowired
     private RecipeUserService recipeUserService;
 
     @RequestMapping(value = "/recipe", method = RequestMethod.GET)
     @ResponseBody
-    public Model displayRecipe(HttpSession session, Model model, @RequestParam long id) {
-        Recipe rep = recipeService.findByID(id);
+    public Model displayRecipe(HttpSession session, Model model, @RequestParam String id) {
+        Recipe rep = recipeService.findByID(Long.parseLong(id));
         model.addAttribute("recipe", rep);
         model.addAttribute("id", id);
         session.setAttribute("id", id);
-        System.out.println("displayRecipe called");
         return model;
     }
 
@@ -74,4 +76,26 @@ public class RecipeController {
         return "index";
         /*+ model.getAttribute("id");*/
     }
+
+    @PostMapping("/Rsubmit")
+    public String AddRating (HttpSession session, Model model, @RequestParam String recipeUsername, @RequestParam String recipeRating) {
+        try {
+            long id = Long.parseLong((String)session.getAttribute("id"));
+            RecipeRatings newRating = new RecipeRatings();
+            newRating.setRatingsID(0l); // why can't this be skipped????
+            System.out.println(recipeRating);
+            newRating.setRecipeRating(Double.parseDouble(recipeRating));
+            System.out.println(newRating.getRecipeRating());
+            newRating.setNickname(recipeUsername);
+            newRating.setRecipeID(id);
+            ratingRepository.save(newRating);
+        }catch (Exception e){
+            System.out.println(e);
+        }
+        return "index";
+        /*+ model.getAttribute("id");*/
+
+    }
+
+
 }
