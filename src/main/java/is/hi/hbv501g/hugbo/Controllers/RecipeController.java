@@ -64,51 +64,54 @@ public class RecipeController {
 
     @PostMapping("/submit")
     public String AddComment (HttpSession session, Model model, @RequestParam String recipeUsername, @RequestParam String recipeComment) {
-        try {
-            long id = Long.parseLong((String)session.getAttribute("id"));
+        if (isLoggedIn(session, model)) {
+            try {
+                long id = Long.parseLong((String)session.getAttribute("id"));
 
-            Recipe recipe = recipeService.findByID(id);
-            System.out.println();
-            RecipeComments newComment = new RecipeComments();
-            System.out.println(newComment);
+                Recipe recipe = recipeService.findByID(id);
+                System.out.println();
+                RecipeComments newComment = new RecipeComments();
+                System.out.println(newComment);
 
-            newComment.setCommentID(0l); // why can't this be skipped????
-            System.out.println(newComment.getCommentID());
+                newComment.setCommentID(0l); // why can't this be skipped????
+                System.out.println(newComment.getCommentID());
 
-            newComment.setMyComment(recipeComment);
-            System.out.println(newComment.getMyComment());
+                newComment.setMyComment(recipeComment);
+                System.out.println(newComment.getMyComment());
 
-            newComment.setNickname(recipeUsername);
-            System.out.println(newComment.getNickname());
+                newComment.setNickname(recipeUsername);
+                System.out.println(newComment.getNickname());
 
-            newComment.setRecipeID(recipe.getRecipeID());
-            System.out.println(newComment.getRecipeID());
+                newComment.setRecipeID(recipe.getRecipeID());
+                System.out.println(newComment.getRecipeID());
 
-            commentRepository.save(newComment);
-        }catch (Exception e){
-            System.out.println(e);
+                commentRepository.save(newComment);
+            }catch (Exception e){
+                System.out.println(e);
+            }
+            return "redirect:/";
         }
-        return "redirect:/";
-        /*+ model.getAttribute("id");*/
+        return "redirect:/login";
     }
 
     @PostMapping("/Rsubmit")
     public String AddRating (HttpSession session, Model model, @RequestParam String recipeUsername, @RequestParam String recipeRating) {
-        try {
-            long id = Long.parseLong((String)session.getAttribute("id"));
-            RecipeRatings newRating = new RecipeRatings();
-            newRating.setRatingsID(0l); // why can't this be skipped????
-            //System.out.println(recipeRating);
-            newRating.setMyRating(Double.parseDouble(recipeRating));
-            //System.out.println(newRating.getMyRating());
-            newRating.setNickname(recipeUsername);
-            newRating.setRecipeID(id);
-            ratingRepository.save(newRating);
-        }catch (Exception e){
-            System.out.println(e);
+        if (isLoggedIn(session, model)) {
+            try {
+                long id = Long.parseLong((String)session.getAttribute("id"));
+                RecipeRatings newRating = new RecipeRatings();
+                newRating.setRatingsID(0l); // why can't this be skipped????
+                //System.out.println(recipeRating);
+                newRating.setMyRating(Double.parseDouble(recipeRating));
+                //System.out.println(newRating.getMyRating());
+                newRating.setNickname(recipeUsername);
+                newRating.setRecipeID(id);
+                ratingRepository.save(newRating);
+            }catch (Exception e){
+                System.out.println(e);
+            }
+            return "redirect:/";
         }
-        return "redirect:/";
-        /*+ model.getAttribute("id");*/
-
+        return "redirect:/login";
     }
 }
