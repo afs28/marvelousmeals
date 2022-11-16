@@ -41,6 +41,15 @@ public class RecipeController {
     @Autowired
     private RecipeUserService recipeUserService;
 
+    private boolean isLoggedIn(HttpSession session, Model model) {
+        RecipeUser sessionUser = (RecipeUser) session.getAttribute("LoggedInUser");
+        if(sessionUser  != null){
+            model.addAttribute("LoggedInUser", sessionUser);
+            return true;
+        }
+        return false;
+    }
+
     @RequestMapping(value = "/recipe", method = RequestMethod.GET)
     @ResponseBody
     public Model displayRecipe(HttpSession session, Model model, @RequestParam String id) {
@@ -48,15 +57,8 @@ public class RecipeController {
         model.addAttribute("recipe", rep);
         model.addAttribute("id", id);
         session.setAttribute("id", id);
-
         model.addAttribute("recipecomment", commentService.findByRecipeID(Long.parseLong(id)));
-        RecipeRatings[] temp = ratingService.findByRecipeID(Long.parseLong(id));
-        System.out.println(temp);
-        for (RecipeRatings t: temp) {
-            System.out.println(t.getMyRating());
-        }
         model.addAttribute("reciperating", ratingService.findByRecipeID(Long.parseLong(id)));
-
         return model;
     }
 
@@ -65,7 +67,8 @@ public class RecipeController {
         try {
             long id = Long.parseLong((String)session.getAttribute("id"));
 
-            RecipeUser recipeUser = recipeUserService.findByRecipeUserID(id);
+            Recipe recipe = recipeService.findByID(id);
+            System.out.println();
             RecipeComments newComment = new RecipeComments();
             System.out.println(newComment);
 
@@ -78,14 +81,14 @@ public class RecipeController {
             newComment.setNickname(recipeUsername);
             System.out.println(newComment.getNickname());
 
-            newComment.setRecipeID(recipeUser.getRecipeUserID());
+            newComment.setRecipeID(recipe.getRecipeID());
             System.out.println(newComment.getRecipeID());
 
             commentRepository.save(newComment);
         }catch (Exception e){
             System.out.println(e);
         }
-        return "index";
+        return "redirect:/";
         /*+ model.getAttribute("id");*/
     }
 
@@ -95,19 +98,17 @@ public class RecipeController {
             long id = Long.parseLong((String)session.getAttribute("id"));
             RecipeRatings newRating = new RecipeRatings();
             newRating.setRatingsID(0l); // why can't this be skipped????
-            System.out.println(recipeRating);
+            //System.out.println(recipeRating);
             newRating.setMyRating(Double.parseDouble(recipeRating));
-            System.out.println(newRating.getMyRating());
+            //System.out.println(newRating.getMyRating());
             newRating.setNickname(recipeUsername);
             newRating.setRecipeID(id);
             ratingRepository.save(newRating);
         }catch (Exception e){
             System.out.println(e);
         }
-        return "index";
+        return "redirect:/";
         /*+ model.getAttribute("id");*/
 
     }
-
-
 }

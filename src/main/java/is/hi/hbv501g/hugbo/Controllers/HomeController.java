@@ -1,6 +1,7 @@
 package is.hi.hbv501g.hugbo.Controllers;
 
 import is.hi.hbv501g.hugbo.Persistence.Entities.Recipe;
+import is.hi.hbv501g.hugbo.Persistence.Entities.RecipeUser;
 import is.hi.hbv501g.hugbo.Services.RecipeService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,6 +20,14 @@ public class HomeController {
         this.recipeService = recipeService;
     }
 
+    private boolean isLoggedIn(HttpSession session, Model model) {
+        RecipeUser sessionUser = (RecipeUser) session.getAttribute("LoggedInUser");
+        if(sessionUser  != null){
+            model.addAttribute("LoggedInUser", sessionUser);
+            return true;
+        }
+        return false;
+    }
     @GetMapping("/")
     public String createHome(Model model) {
         model.addAttribute("recipe", recipeService.findAll());
@@ -27,10 +36,13 @@ public class HomeController {
     }
 
     @GetMapping(value = "/create")
-    public String createRecipe(Model model) {
-        model.addAttribute("recipe", new Recipe());
-        System.out.println("create - form recipe called");
-        return "formRecipe";
+    public String createRecipe(Model model, HttpSession session) {
+        if (isLoggedIn(session, model)) {
+            model.addAttribute("recipe", new Recipe());
+            System.out.println("create - form recipe called");
+            return "formRecipe";
+        }
+        return "redirect:/login";
     }
 
     @PostMapping(value = "/create")
@@ -42,7 +54,10 @@ public class HomeController {
 
     @RequestMapping(value="edit-recipe", method = RequestMethod.GET)
     public String displayEditARecipe(HttpSession session, Model model) {
-        return "editFormRecipe";
+        if (isLoggedIn(session, model)) {
+            return "editFormRecipe";
+        }
+        return "redirect:/login";
     }
 
     @RequestMapping(value="edit-recipe", method = RequestMethod.POST)

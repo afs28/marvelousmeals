@@ -8,7 +8,7 @@
   <!-- welcome message -->
   <h1 th:text="${'Hello ' + session.LoggedInUser.recipeUsername + '!'}"></h1>
 
-  <!-- bak to homepage -->
+  <!-- back to homepage -->
   <p>
     <a href="/">Homepage</a>
   </p>
@@ -18,7 +18,7 @@
     <a th:href="@{/create}">Add a new recipe</a>
   </p>
 
-  <!-- change password -->
+  <!-- change password
   <p>
     <form th:action="@{/profile/changePassword}" method="post">
       <p th:text="${passerror}"></p>
@@ -27,7 +27,7 @@
       <input type="submit" value="change password"/>
     </form>
   </p>
-
+  -->
   <!-- log out -->
   <p>
     <form th:action="@{/logout}" method="post">
