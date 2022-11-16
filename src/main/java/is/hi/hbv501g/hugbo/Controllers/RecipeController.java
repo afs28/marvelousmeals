@@ -45,6 +45,10 @@ public class RecipeController {
         model.addAttribute("recipe", rep);
         model.addAttribute("id", id);
         session.setAttribute("id", id);
+        RecipeComments recipeComment = commentService.findByCommentID(Long.parseLong(id));
+        model.addAttribute("recipecomment", recipeComment);
+        model.addAttribute("recipecommentid", id);
+        session.setAttribute("recipecommentid", id);
         return model;
     }
 

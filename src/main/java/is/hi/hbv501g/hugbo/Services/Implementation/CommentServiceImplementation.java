@@ -1,6 +1,7 @@
 package is.hi.hbv501g.hugbo.Services.Implementation;
 
 import is.hi.hbv501g.hugbo.Persistence.Entities.RecipeComments;
+import is.hi.hbv501g.hugbo.Persistence.Entities.RecipeUser;
 import is.hi.hbv501g.hugbo.Persistence.Repositories.CommentRepository;
 import is.hi.hbv501g.hugbo.Persistence.Repositories.RecipeRepository;
 import is.hi.hbv501g.hugbo.Persistence.Repositories.RecipeUserRepository;
@@ -17,6 +18,10 @@ public class CommentServiceImplementation implements CommentService {
     @Autowired
     RecipeUserRepository recipeUserRepository;
 
+    @Override
+    public RecipeComments findByCommentID(long commentID) {
+        return commentRepository.findByCommentID(commentID);
+    }
     @Override
     public RecipeComments saveComment(RecipeComments newComment) {
         return commentRepository.save(newComment);

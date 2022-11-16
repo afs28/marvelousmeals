@@ -52,7 +52,6 @@ public class RecipeUserServiceImplementation implements RecipeUserService {
         }
         return null;
     }
-
     @Override
     public RecipeUser findByRecipeUserID(long id) {
         return recipeUserRepository.findByRecipeUserID(id);

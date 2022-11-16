@@ -46,6 +46,10 @@
       <input class="submit-button" type="submit" value="submit"/>
     </form>
   </div>
+  <div th:object="${recipecomment}">
+    <p th:text="${recipecomment.nickname}"></p>
+    <pre th:text="${recipecomment.myComment}"></pre>
+  </div>
   <style>
     .flex-box {
       display: flex;
