@@ -30,10 +30,10 @@ public class RecipeRatings {
         return ratingID;
     }
 
-    public void setRecipeRating(Double recipeRating) {
+    public void setMyRating(Double recipeRating) {
         this.myRating = recipeRating;
     }
-    public Double getRecipeRating() {
+    public Double getMyRating() {
         return myRating;
     }
 

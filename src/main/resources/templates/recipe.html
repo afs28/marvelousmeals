@@ -59,6 +59,7 @@
     </tr>
   </tbody>
   </table>
+
   <table>
     <thead>
     <tr>
@@ -66,12 +67,13 @@
     </tr>
     </thead>
     <tbody>
-    <tr th:each="recipe : ${reciperating}">
-      <td th:text="${recipe.nickname}"></td>
-      <td th:text="${recipe.myRating}"></td>
+    <tr th:each="rating: ${reciperating}">
+      <td th:text="${rating.nickname}"></td>
+      <td th:text="${rating.myRating}"></td>
     </tr>
     </tbody>
   </table>
+
   <style>
     .flex-box {
       display: flex;

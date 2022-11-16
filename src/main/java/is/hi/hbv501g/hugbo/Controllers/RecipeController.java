@@ -50,7 +50,11 @@ public class RecipeController {
         session.setAttribute("id", id);
 
         model.addAttribute("recipecomment", commentService.findByRecipeID(Long.parseLong(id)));
-
+        RecipeRatings[] temp = ratingService.findByRecipeID(Long.parseLong(id));
+        System.out.println(temp);
+        for (RecipeRatings t: temp) {
+            System.out.println(t.getMyRating());
+        }
         model.addAttribute("reciperating", ratingService.findByRecipeID(Long.parseLong(id)));
 
         return model;
@@ -92,8 +96,8 @@ public class RecipeController {
             RecipeRatings newRating = new RecipeRatings();
             newRating.setRatingsID(0l); // why can't this be skipped????
             System.out.println(recipeRating);
-            newRating.setRecipeRating(Double.parseDouble(recipeRating));
-            System.out.println(newRating.getRecipeRating());
+            newRating.setMyRating(Double.parseDouble(recipeRating));
+            System.out.println(newRating.getMyRating());
             newRating.setNickname(recipeUsername);
             newRating.setRecipeID(id);
             ratingRepository.save(newRating);
