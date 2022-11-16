@@ -8,6 +8,7 @@ import is.hi.hbv501g.hugbo.Persistence.Entities.RecipeUser;
 import is.hi.hbv501g.hugbo.Persistence.Repositories.CommentRepository;
 import is.hi.hbv501g.hugbo.Persistence.Repositories.RatingRepository;
 import is.hi.hbv501g.hugbo.Services.CommentService;
+import is.hi.hbv501g.hugbo.Services.RatingService;
 import is.hi.hbv501g.hugbo.Services.RecipeService;
 import is.hi.hbv501g.hugbo.Services.RecipeUserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,6 +33,8 @@ public class RecipeController {
     @Autowired
     private CommentService commentService;
     @Autowired
+    private RatingService ratingService;
+    @Autowired
     private CommentRepository commentRepository;
     @Autowired
     private RatingRepository ratingRepository;
@@ -45,10 +48,11 @@ public class RecipeController {
         model.addAttribute("recipe", rep);
         model.addAttribute("id", id);
         session.setAttribute("id", id);
-        RecipeComments recipeComment = commentService.findByCommentID(Long.parseLong(id));
-        model.addAttribute("recipecomment", recipeComment);
-        model.addAttribute("recipecommentid", id);
-        session.setAttribute("recipecommentid", id);
+
+        model.addAttribute("recipecomment", commentService.findByRecipeID(Long.parseLong(id)));
+
+        model.addAttribute("reciperating", ratingService.findByRecipeID(Long.parseLong(id)));
+
         return model;
     }
 

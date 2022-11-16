@@ -12,8 +12,8 @@ public class RecipeRatings {
     @Column(name = "ratingid")
     private Long ratingID;
 
-    @Column(name = "reciperating")
-    private Double recipeRating;
+    @Column(name = "myrating")
+    private Double myRating;
 
     @Column(name = "nickname")
     private String nickname;
@@ -31,10 +31,10 @@ public class RecipeRatings {
     }
 
     public void setRecipeRating(Double recipeRating) {
-        this.recipeRating = recipeRating;
+        this.myRating = recipeRating;
     }
     public Double getRecipeRating() {
-        return recipeRating;
+        return myRating;
     }
 
     public void setNickname(String nickname) {

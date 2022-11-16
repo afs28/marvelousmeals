@@ -37,7 +37,7 @@ CREATE TABLE IF NOT EXISTS recipecomment (
 DROP TABLE IF EXISTS reciperating;
 CREATE TABLE IF NOT EXISTS reciperating (
                                                     ratingID SERIAL,
-                                                    reciperating VARCHAR,
+                                                    myrating VARCHAR,
                                                     --userID INT,
                                                     nickname VARCHAR,
                                                     recipeID INT,
@@ -49,18 +49,3 @@ CREATE TABLE IF NOT EXISTS reciperating (
                                                         FOREIGN KEY(recipeID)
                                                             REFERENCES recipe(recipeID)
     );
-DROP TABLE IF EXISTS reciperating;
-CREATE TABLE IF NOT EXISTS reciperating (
-                                            ratingID SERIAL,
-                                            reciperating VARCHAR,
-    --userID INT,
-                                            nickname VARCHAR,
-                                            recipeID INT,
-                                            PRIMARY KEY (ratingID),
-    --CONSTRAINT fk_user
-    --FOREIGN KEY(userID)
-    --REFERENCES recipeuser(recipeuserID),
-                                            CONSTRAINT fk_recipe
-                                                FOREIGN KEY(recipeID)
-                                                    REFERENCES recipe(recipeID)
-);

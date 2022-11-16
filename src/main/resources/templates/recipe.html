@@ -46,10 +46,32 @@
       <input class="submit-button" type="submit" value="submit"/>
     </form>
   </div>
-  <div th:object="${recipecomment}">
-    <p th:text="${recipecomment.nickname}"></p>
-    <pre th:text="${recipecomment.myComment}"></pre>
-  </div>
+  <table>
+  <thead>
+  <tr>
+    <th hidden>recipeID</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="recipe : ${recipecomment}">
+    <td th:text="${recipe.nickname}"></td>
+    <td th:text="${recipe.myComment}"></td>
+    </tr>
+  </tbody>
+  </table>
+  <table>
+    <thead>
+    <tr>
+      <th hidden>recipeID</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="recipe : ${reciperating}">
+      <td th:text="${recipe.nickname}"></td>
+      <td th:text="${recipe.myRating}"></td>
+    </tr>
+    </tbody>
+  </table>
   <style>
     .flex-box {
       display: flex;

@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 public interface CommentRepository extends JpaRepository<RecipeComments, Long> {
 
     RecipeComments findByCommentID(long commentID);
+    RecipeComments[] findByRecipeID(long recipeID);
     RecipeComments save(RecipeComments recipeComments);
     void delete(RecipeComments recipeComments);
 

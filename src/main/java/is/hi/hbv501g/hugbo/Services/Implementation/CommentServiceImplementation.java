@@ -23,6 +23,9 @@ public class CommentServiceImplementation implements CommentService {
         return commentRepository.findByCommentID(commentID);
     }
     @Override
+    public RecipeComments[] findByRecipeID(long recipeID) { return commentRepository.findByRecipeID(recipeID);
+    }
+    @Override
     public RecipeComments saveComment(RecipeComments newComment) {
         return commentRepository.save(newComment);
     }
