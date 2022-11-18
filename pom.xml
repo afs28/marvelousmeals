@@ -89,12 +89,6 @@
             <artifactId>lombok</artifactId>
         </dependency>
     </dependencies>
-    <bean class="org.thymeleaf.spring4.view.ThymeleafViewResolver">
-        <property name="templateEngine" ref="templateEngine" />
-        <!-- NOTE 'order' and 'viewNames' are optional -->
-        <property name="order" value="1" />
-        <property name="viewNames" value="*.html,*.xhtml" />
-    </bean>
     <build>
         <plugins>
             <plugin>
